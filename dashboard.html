@@ -21,28 +21,31 @@
 <body>
     <div class="d-flex" id="wrapper">
 
-        <div class="text-white" id="sidebar-wrapper" style="background: rgb(31, 27, 46);">
+        <div class="text-white" id="sidebar-wrapper" style="background: rgb(0, 0, 0);">
 
         <div class="sidebar-heading text-center py-4  fs-4 fw-bold ">
-            <label class="fw-light" style="color: rgb(255, 1, 234); font-weight: bold; font-family: poppins;">Personal</label> HRS
+            <label class="fw-light" style="color: rgb(255, 255, 255); font-weight: bold; font-family: poppins;">Internship</label>JRS
         </div>
 
         <div class="list-group list-group-flush my-3">
             <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                <i class="fas fa-plus me-2"></i>Post a Job
             </a>
             <a href="addpatient.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-            <i class="fas fa-plus me-2"></i>Add Patient
+            <i class="fas fa-tachometer-alt me-2"></i>Jobs
             </a>
             <a href="patientlist.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-            <i class="fas fa-list me-2"></i>Patient List
+            <i class="fas fa-list me-2"></i>Campaigns
             </a>
             <a href="bookappoint.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-                <i class="fas fa-paperclip me-2"></i> Book Apointment
+                <i class="fas fa-paperclip me-2"></i> Candidates
             </a>
             <a href="medhistory.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-                <i class="fas fa-chart-line me-2"></i>Medical History
+                <i class="fas fa-list me-2"></i>Interviews
             </a>
+            <a href="medhistory.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
+              <i class="fas fa-chart-line me-2"></i>Analytics
+          </a>
             <a href="" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                 <i class="fas fa-project-diagram me-2"></i>Log out
             </a>
@@ -56,16 +59,93 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
             <div class="d-flex align-items-center">
                 <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Hi Doc</h2>
+                <h2 class="fs-2 m-0">Hi User</h2>
             </div>
 
         </nav>
 
         <!--After the dashboard nav-->
+        <!--<div class="container mt-5" style="padding: 5%; border-radius: 10px; background-color: #f17f94   ;">
+          <h2>Your Employer Account</h2>
+        </div>-->
+        <form class="container flex-column mt-3 ms-2" style="width: 100%;" method="post">
+          <div class="heading" style="color: white; font-size: 10px;">
+            <h5>Post a Job</h5>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Job Title</label>
+            <input type="text" class="form-control" name="job-title" placeholder="" required>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">What type of job is it? </label>
+            <select type="select" class="form-control" name="" required>
+              <option value="">Full Time </option>
+              <option value="">Part Time</option>
+              <option value="">Temporary</option>
+              <option value="">Contract</option>
+              <option value="">Internship</option>
+              <option value="">Commission</option>
+              <option value="">New Grad</option>
+              <option value="">Permanent</option>
+            </select>
+          </div>
 
-        <div  style="color: red; font-weight: bolder; margin-left: 2%;">
-            <p>Add Patient</p>
-        </div>
+          <div class="mb-3">
+            <label class="form-label">Where would you like to advertise this job?*</label>
+            <input type="text" class="form-control" name="lastname" required>
+          </div>
+  
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  
+  
+          <!--sECOND fORM--><!--sECOND fORM--><!--sECOND fORM--><!--sECOND fORM-->
+  
+  
+          <div class=" flex-column mt-2" style="width: 100%;">
+            <div class="heading" style=" color: white; font-size: 10px;">
+              <h5>Job Details</h5>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">How many people do you want to hire for this opening?</label>
+              <input type="text" class="form-control" name="gender" required>
+            </div>
+            <div class="mb-3 row">
+              <div class="col">
+              <label class="form-label"><strong>Minimum</strong></label>
+              <input type="type" class="form-control" name="dob" placeholder="₦" required>
+              </div>
+              <div class="col">
+                <label class="form-label"><strong>Maximum</strong></label>
+                <input type="type" class="form-control" name="dob" placeholder="₦" required>
+              </div>
+              <div class="col">
+                <label class="form-label">Rate</label>
+                <select type="select" class="form-control" name="" required>
+                  <option value="">Per Hour </option>
+                  <option value="">Per Day</option>
+                  <option value="">Per week</option>
+                  <option value="">Per Month</option>
+                  <option value="">Per Year</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label"><strong>Job Description</strong></label>
+              <input type="textarea" class="form-control" name="occupation" required>
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label"><strong>Upload a PDF or a DOCX</strong></label>
+              <input type="file" class="form-control" name="" required>
+            </div>
+  
+          <button type="submit" class="btn btn-primary" name="submit">Save</button>
+        </form>
+
+        
 
 
 
