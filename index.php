@@ -127,7 +127,7 @@
               <p class="description">Research, Teaching & Training</p>
               <p class="description">Lagos - Full Time</p>
               <p class="description">IT Telecommunications</p>
-              <p>Salary - N75,000-150,000</p>
+              <p style="background-color: grey; padding: 10px; color: white;">Salary - N75,000-150,000</p>
             </div>
           </div>
 
@@ -139,7 +139,7 @@
               <p class="">Internship</p>
               <p class="description">Lagos - Full Time</p>
               <p class="">IT Telecommunications</p>
-              <p>Salary - N45,000</p>
+              <p style="background-color: grey; padding: 10px; color: white;">Salary - N45,000</p>
             </div>
           </div>
 
@@ -162,7 +162,7 @@
               <p class="">Technology</p>
               <p class="description">Lagos - Full Time</p>
               <p class="">IT Telecommunications</p>
-              <p>Salary - Voluntary</p>
+              <p style="background-color: grey; padding: 10px; color: white;">Salary - Voluntary</p>
             </div>
           </div>
 
