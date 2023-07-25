@@ -122,7 +122,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
               <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="">Graduate Trainee/Intern</a></h4>
+              <h4 class="title"><a href="signup.php">Graduate Trainee/Intern</a></h4>
               <p> Myer Advisory</p>
               <p class="description">Research, Teaching & Training</p>
               <p class="description">Lagos - Full Time</p>
@@ -134,7 +134,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
               <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="">IPNX NYSC/INTERNSHIP PROGRAMME</a></h4>
+              <h4 class="title"><a href="signup.php">IPNX NYSC/INTERNSHIP PROGRAMME</a></h4>
               <p>IPNX</p>
               <p class="">Internship</p>
               <p class="description">Lagos - Full Time</p>
@@ -145,7 +145,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
-              <h4 class="title"><a href="">Graduate Technology Intern</a></h4>
+              <h4 class="title"><a href="signup.php">Graduate Technology Intern</a></h4>
               <p> WorQulture</p>
               <p class="">Research, Teaching & Training</p>
               <p class="description">Lagos - Full Time</p>
@@ -157,7 +157,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
               <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="">Campus Ambassador Program</a></h4>
+              <h4 class="title"><a href="signup.php">Campus Ambassador Program</a></h4>
               <p>Go Money</p>
               <p class="">Technology</p>
               <p class="description">Lagos - Full Time</p>
