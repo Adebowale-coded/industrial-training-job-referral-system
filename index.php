@@ -166,6 +166,8 @@
             </div>
           </div>
 
+          <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
+
         </div>
 
       </div>
@@ -347,7 +349,7 @@
               </div>
             </div>
           </div>
-
+          <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
         </div>
 
       </div>
