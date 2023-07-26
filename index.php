@@ -122,53 +122,42 @@ require("dbconn.php");
         </div>
 
         <div class="row">
+        <?php
+          $sql1 = "SELECT * FROM `offers`";
+          $result1 = mysqli_query($con, $sql1);
+          $idarray1 = [];
+          $idarraynew1 = [];
+          while ($row1 = mysqli_fetch_assoc($result1)) {
+            array_push($idarray1, $row1["companyid"]);
+          }
+          while (count($idarraynew1) < 4) {
+            $ran1 =  rand(1, count($idarray1));
+            if (!in_array($ran1, $idarraynew1)) {
+              array_push($idarraynew1, $ran1);
+            }
+          }
+
+          for ($i = 0; $i < 4; $i++) {
+            $sql = "SELECT * FROM `offers` WHERE id = $idarraynew1[$i]";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $sql1 = "SELECT `name` FROM  `company` WHERE id = $idarraynew1[$i]";
+            $result1 = mysqli_query($con, $sql1);
+            $row1 = mysqli_fetch_assoc($result1)
+          ?>
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
               <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="signup.php">Graduate Trainee/Intern</a></h4>
-              <p> Myer Advisory</p>
-              <p class="description">Research, Teaching & Training</p>
-              <p class="description">Lagos - Full Time</p>
-              <p class="description">IT Telecommunications</p>
-              <p style="background-color: grey; padding: 10px; color: white;">Salary - N75,000-150,000</p>
+              <h4 class="title"><a href="signup.php"><?php echo $row["jobtitle"] ?></a></h4>
+              <p><?php echo $row1["name"] ?></p>
+              <p class="description"><?php echo $row["type"] ?></p>
+              <p class="description"><?php echo $row["location"] ?></p>
+              <p style="background-color: grey; padding: 10px; color: white;"><?php echo $row["salary"] ?></p>
             </div>
           </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" style="text-align: left;">
-              <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="signup.php">IPNX NYSC/INTERNSHIP PROGRAMME</a></h4>
-              <p>IPNX</p>
-              <p class="">Internship</p>
-              <p class="description">Lagos - Full Time</p>
-              <p class="">IT Telecommunications</p>
-              <p style="background-color: grey; padding: 10px; color: white;">Salary - N45,000</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" style="text-align: left;">
-              <h4 class="title"><a href="signup.php">Graduate Technology Intern</a></h4>
-              <p> WorQulture</p>
-              <p class="">Research, Teaching & Training</p>
-              <p class="description">Lagos - Full Time</p>
-              <p class="">IT Telecommunications</p>
-              <p style="background-color: grey; padding: 10px; color: white;">Salary - N70,000</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" style="text-align: left;">
-              <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-              <h4 class="title"><a href="signup.php">Campus Ambassador Program</a></h4>
-              <p>Go Money</p>
-              <p class="">Technology</p>
-              <p class="description">Lagos - Full Time</p>
-              <p class="">IT Telecommunications</p>
-              <p style="background-color: grey; padding: 10px; color: white;">Salary - Voluntary</p>
-            </div>
-          </div>
-
+          <?php
+          }
+          ?>
           <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
 
         </div>
