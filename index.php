@@ -1,3 +1,6 @@
+<?php
+require("dbconn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -278,77 +281,49 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/mtn.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>MTN</h4>
-                <span>Telecommunications</span>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+          <?php
+          $sql = "SELECT * FROM `company`";
+          $result = mysqli_query($con, $sql);
+          $idarray = [];
+          $idarraynew = [];
+          while ($row = mysqli_fetch_assoc($result)) {
+            array_push($idarray, $row["id"]);
+          }
+          while (count($idarraynew) < 4) {
+            $ran =  rand(1, count($idarray));
+            if (!in_array($ran, $idarraynew)) {
+              array_push($idarraynew, $ran);
+            }
+          }
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/dango.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+          for ($i = 0; $i < 4; $i++) {
+            $sql = "SELECT * FROM `company` WHERE id = $idarraynew[$i]";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_assoc($result)
+          ?>
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+              <div class="member">
+                <div class="member-img">
+                  <img src="assets/img/mtn.jpg" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4><?php echo $row["name"] ?></h4>
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Dangote</h4>
-                <span>Building</span>
-              </div>
             </div>
-          </div>
+          <?php
+          }
+          ?>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/zenith.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Zenith</h4>
-                <span>Banking/Finance</span>
-              </div>
-            </div>
-          </div>
+        </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/nestle.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Nestle PLC</h4>
-                <span>Beverages</span>
-              </div>
-            </div>
-          </div>
           <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
         </div>
 
