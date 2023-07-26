@@ -31,20 +31,20 @@ require("dbconn.php");
         </div>
 
         <div class="list-group list-group-flush my-3">
-            <a href="updateprofile.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-                <i class="fas fa-plus me-2"></i>Profile
-            </a>
-            <a href="myjobs.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-            <i class="fas fa-tachometer-alt me-2"></i>MyJobs
-            </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-            <i class="fas fa-list me-2"></i>My Review
-            </a>
-            
-            <a href="" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                <i class="fas fa-project-diagram me-2"></i>Sign out
-            </a>
-        </div>
+        <a href="updateprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+          <i class="fas fa-plus me-2"></i>Profile
+        </a>
+        <a href="myjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+          <i class="fas fa-tachometer-alt me-2"></i>MyJobs
+        </a>
+        <a href="myreview.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
+          <i class="fas fa-list me-2"></i>My Review
+        </a>
+
+        <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+          <i class="fas fa-project-diagram me-2"></i>Sign out
+        </a>
+      </div>
 
     </div>
 
