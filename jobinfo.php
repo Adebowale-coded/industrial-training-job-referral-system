@@ -1,6 +1,34 @@
 <?php
 session_start();
 require("dbconn.php");
+
+if (isset($_POST['apply'])) {
+    $applicantid = $_SESSION['id'];
+    $companyname = $_POST['companyname'];
+    $jobtitle = $_POST['jobtitle'];
+    $dateapplied = date("Y/m/d");
+    $status = "Pending";
+
+    $sql = "INSERT INTO `jobsapplied`(`applicantid`, `companyname`, `jobtitle`, `dateapplied`, `status`) 
+    VALUES ('$applicantid','$companyname','$jobtitle','$dateapplied','$status')";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+?>
+        <script>
+            alert("Application successful")
+            window.location.href = "myjobs.php"
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            alert("there was an error")
+            window.location.href = window.location.href
+        </script>
+<?php
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +125,11 @@ require("dbconn.php");
                             <p><?php echo $row1["name"] ?></p>
                             <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
                             <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
-                            <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">Apply</button></a>
+                            <form method="post">
+                                <input name="companyname" value="<?php echo $row1["name"] ?>" hidden>
+                                <input name="jobtitle" value="<?php echo $row["jobtitle"] ?>" hidden>
+                                <button class="btn btn-primary" type="submit" name="apply">Apply</button>
+                            </form>
                             <div>
                                 <span>Qualification and Requirements</span>
                                 <p>To be eligible for the <?php echo $row["jobtitle"] ?>, applicants must have the following qualifications:</p>
