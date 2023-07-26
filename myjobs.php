@@ -76,7 +76,7 @@ require("dbconn.php");
         
         <div class="ms-3">
             <h4> My Jobs</h3>
-            <button class="btn btn-primary">Find Jobs</button>
+            <a href="jobs.php"><button class="btn btn-primary">Find Jobs</button></a>
         </div>
         
     <div class="container mt-3">

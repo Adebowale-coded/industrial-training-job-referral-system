@@ -33,7 +33,7 @@ require("dbconn.php");
             </div>
 
             <div class="list-group list-group-flush my-3">
-                <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                <a href="updateprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-plus me-2"></i>Profile
                 </a>
                 <a href="myjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
@@ -75,36 +75,80 @@ require("dbconn.php");
               </div>
         </nav>-->
 
-        <?php
-          $sql = "SELECT * FROM `offers`";
-          $result = mysqli_query($con, $sql);
-        
-          while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row['companyid'];
-            $sql1 = "SELECT `name` FROM  `company` WHERE id = $id";
-            $result1 = mysqli_query($con, $sql1);
-            $row1 = mysqli_fetch_assoc($result1);
-            ?>
+
+
+
             <div class="container mt-3">
                 <div class="card " style="background-color: rgb(203, 206, 206);">
+                    <?php
+                    $id = $_GET['id'];
+                    $sql = "SELECT * FROM `offers` WHERE id = $id";
+                    $result = mysqli_query($con, $sql);
+                    $row = mysqli_fetch_assoc($result);
+
+                    $companyid = $row['companyid'];
+                    $sql1 = "SELECT `name` FROM  `company` WHERE id = $companyid";
+                    $result1 = mysqli_query($con, $sql1);
+                    $row1 = mysqli_fetch_assoc($result1);
+                    ?>
                     <div class="row">
-                        <div class="col-md-4">
-                            <img src="img/close.jpg" class="img-fluid" />
-                        </div>
-                        <div class="col-md-8 first">
+                        <div class="col pt-4 first">
                             <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
                             <p><?php echo $row1["name"] ?></p>
                             <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
-                            <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
-                            <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">More</button></a>
+                            <div>
+                                <span>This Role is for</span>
+                                <ul>
+                                    <li>Anyone who wants to grow their career but is still struggling to gain practical experience</li>
+                                    <li>Anyone who wants to secure job experience for better positioning in the job market</li>
+                                    <li>Anyone who already understands and implements the concepts but wants to improve their skills, especially with current tools and techniques</li>
+                                    <li>Anyone who has a lingering interest and formal training in product management, agile project management, or operations and wants to explore it further</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <span>Qualification and Requirements</span>
+                                <p>To be eligible for the Gooro Internship Program, applicants must have the following qualifications:</p>
+                                <ul>
+                                    <li>At least 1 year of experience in related roles.</li>
+                                    <li>Must have taken formal training and have an undeniable interest in Product, Project, or Operations Management.</li>
+                                    <li>Familiarity with project management tools, showcasing a willingness to adopt modern practices.</li>
+                                    <li>Excellent written and verbal communication skills</li>
+                                    <li>Problem-solving and conflict-resolution abilities.</li>
+                                    <li>Outstanding organizational, time management, and planning skills.</li>
+                                    <li>Attention to detail and a commitment to delivering high-quality work.</li>
+                                    <li>Eagerness to learn and develop business acumen.</li>
+                                    <li>Self-motivated and proactive, with the ability to work independently as well as in a team environment.</li>
+                                    <li>Ability to work both independently and collaboratively in a team.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span>Start and Duration</span>
+                                <p>The Gooro Internship Program will begin on 4th September, 2023, and run for 3 months.</p>
+                                <span>About</span>
+                                <p>Gooro Consulting is a leading provider of Product, Project and Operations Management services.
+
+                                    We help businesses of all sizes achieve their goals by providing them with the expertise and resources they need to succeed.
+
+                                    Join us at Gooro Consulting to embark on an exciting journey towards a rewarding career! Apply now to be part of our second cohort Internship Program.
+
+                                    We look forward to hearing from you!</p>
+
+                                <p>Job Types: Part-time, Temporary, Internship</p>
+                                <p>Contract length: 3 months</p>
+                                <p>Part-time hours: 15 - 20 per week</p>
+                                <p>Application Deadline: 31/07/2023<br />Expected Start Date: 04/09/2023</p>
+                                <p>Send Application to <span class="font-style: italics;">goorohr@yahoomail.com</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php
-          }
-          ?>
-           
+
+
+
+
+
         </div>
 
 
