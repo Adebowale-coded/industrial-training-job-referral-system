@@ -90,7 +90,7 @@ if (isset($_POST['register'])) {
 
 								</div>
 							</form>
-							<p class="text-center">Already a member? <a href="signup.php">Log In</a></p>
+							<p class="text-center">Already a member? <a href="login.php">Log In</a></p>
 						</div>
 					</div>
 				</div>
