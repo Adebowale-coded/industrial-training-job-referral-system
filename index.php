@@ -121,7 +121,7 @@ require("dbconn.php");
           <p>View and apply for the available positions</p>
         </div>
 
-        <div class="row">
+        <div class="card flex-row" style=" border: none;">
         <?php
           $sql1 = "SELECT * FROM `offers`";
           $result1 = mysqli_query($con, $sql1);
@@ -145,24 +145,24 @@ require("dbconn.php");
             $result1 = mysqli_query($con, $sql1);
             $row1 = mysqli_fetch_assoc($result1)
           ?>
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
-              <!--<div class="icon"><i class="bx bxl-dribbble"></i></div>-->
               <h4 class="title"><a href="signup.php"><?php echo $row["jobtitle"] ?></a></h4>
               <p><?php echo $row1["name"] ?></p>
               <p class="description"><?php echo $row["type"] ?></p>
               <p class="description"><?php echo $row["location"] ?></p>
-              <p style="background-color: grey; padding: 10px; color: white;"><?php echo $row["salary"] ?></p>
+              <p style="background-color: grey; padding: 10px; color: white; border-radius: 20px;"><?php echo $row["salary"] ?></p>
             </div>
-          </div>
+          </div >
           <?php
           }
           ?>
-          <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
+          
 
         </div>
-
+        <a href="signup.php" class=""><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
       </div>
+      
     </section><!-- End Services Section -->
 
     
