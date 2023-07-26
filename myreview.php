@@ -1,10 +1,13 @@
+<?php
+require("dbconn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobs | Dashboard</title>
+    <title>MyReview | Dashboard</title>
     <link rel="icon" href="img/logo2.png" type="image/x-icon">
     <link href="assets3/css/bootstrap.min.css" rel="stylesheet">
     <script src="assets3/js/bootstrap.min.js"></script>
@@ -31,7 +34,7 @@
             <a href="updateprofile.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
                 <i class="fas fa-plus me-2"></i>Profile
             </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
+            <a href="myjobs.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
             <i class="fas fa-tachometer-alt me-2"></i>MyJobs
             </a>
             <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
@@ -71,53 +74,42 @@
         </nav>-->
 
         
-
+        <div class="ms-3">
+            <h4> My Review</h3>
+            <button class="btn btn-primary">Write Review</button>
+        </div>
         
-       <div class="container mt-3">
-        <div class="card " style="background-color: rgb(203, 206, 206);">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="img/close.jpg" class="img-fluid"/>
-                </div>
-                <div class="col-md-8 pt-4 first">
-                    <h3><strong>Gooro Internship program</strong></h3>
-                    <p>Gooro Consulting Limited</p>
-                    <p>Lagos | <strong style="font-size: 12px;">Part Time +2</strong></p>
-                    <div>
-                        <span>This Role is for</span>
-                        <ul>
-                            <li>Anyone who wants to grow their career but is still struggling to gain practical experience</li>
-                            <li>Anyone who wants to secure job experience for better positioning in the job market</li>
-                            <li>Anyone who already understands and implements the concepts but...<span style="font-style: italic; cursor: pointer; text-decoration: none;"><a href="onepgjob.html">View More</a></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!--second css card--> <!--second css card--> <!--second css card--> <!--second css card-->
-    <div class="container mt-2">
-        <div class="card" style="background-color: rgb(203, 206, 206);">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="img/close.jpg" class="img-fluid"/>
-                </div>
-                <div class="col-md-8 pt-4 first" >
-                    <h3 ><strong>ZOHO One Tech Expert</strong></h3>
-                    <p>Sterlings Career Limited</p>
-                    <p>Lagos | <strong style="font-size: 12px;">Contract</strong></p>
-                    <div>
-                        <span>This Role is for</span>
-                        <ul>
-                            <li>Anyone who wants to grow their career but is still struggling to gain practical experience</li>
-                            <li>Anyone who wants to secure job experience for better positioning in the job market</li>
-                            <li>Anyone who already understands and implements the concepts but...<span style="font-style: italic; cursor: pointer; text-decoration: none;"><a href="onepgjob.html">View More</a></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container mt-3">
+        <div class="table-responsive ms-4 w-100">
+            <table class="table mt-3 ">
+                <thead style="background-color: rgb(0, 0, 0); color: white;">
+                  <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Company's Name</th>
+                    <th scope="col">Comment</th>
+                  </tr>
+                </thead> 
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM `review` where applicantid = ''";
+                    $result = mysqli_query($con, $sql);
+                    if(mysqli_num_rows($result) > 0){
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                      <tr>
+                        <th scope="row"><?php echo $row['id'] ?></th>
+                        <td><?php echo $row['companyname'] ?></td>
+                        <td><?php echo $row['comment'] ?></td>
+                      </tr>
+                        <?php
+                        }
+                    }else {
+                        echo "<tr><td>No record found</td></tr>";
+                    }
+                        ?>
+                    </tbody>
+                  </table>
+                  </div>
     </div>
 
         

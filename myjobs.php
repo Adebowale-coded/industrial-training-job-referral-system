@@ -1,3 +1,6 @@
+<?php
+require("dbconn.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,17 +88,27 @@
                     <th scope="col">Company's Name</th>
                     <th scope="col">Date Applied</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Company's Name</th>
                   </tr>
                 </thead> 
                 <tbody>
+                    <?php
+                    $sql = "SELECT * FROM `jobsapplied` where applicantid = ''";
+                    $result = mysqli_query($con, $sql);
+                    if(mysqli_num_rows($result) > 0){
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Gooro Limited</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <th scope="row"><?php echo $row['id'] ?></th>
+                        <td><?php echo $row['companyname'] ?></td>
+                        <td><?php echo $row['dateapplied'] ?></td>
+                        <td><?php echo $row['status'] ?></td>
                       </tr>
+                        <?php
+                        }
+                    }else {
+                        echo "<tr><td>No record found</td></tr>";
+                    }
+                        ?>
                     </tbody>
                   </table>
                   </div>
