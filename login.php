@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['lastname'] = $res['lastname'];
 			$_SESSION['email'] = $res['email'];
 			$_SESSION['role'] = $member;
-			header("Location: patientdash.php");
+			header("Location: companyprofile.php");
 		}else {
 			?>
 			<script>

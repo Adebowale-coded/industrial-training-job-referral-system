@@ -1,10 +1,49 @@
+<?php
+session_start();
+require("dbconn.php");
+
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM `company` where id = ''";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
+
+if (isset($_POST['update'])) {
+	$firstname = $_POST['firstname'];
+	$lastname = $_POST['lastname'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$about = $_POST['about'];
+	$age = $_POST['age'];
+	$school = $_POST['school'];
+
+	$sql = "UPDATE `student` SET `firstname`='$firstname',`lastname`='$lastname',`email`='$email',`address`='$address',`phone`='$phone',`about`='$about',`age`='$age',`school`='$school' WHERE id = $id";
+	$result = mysqli_query($con, $sql);
+
+	if ($result) {
+?>
+		<script>
+			alert("Profile updated successfully")
+			window.location.href = "userprofile.php"
+		</script>
+	<?php
+	} else {
+	?>
+		<script>
+			alert("there was an error")
+			window.location.href = window.location.href
+		</script>
+<?php
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company's Profile | Dashboard</title>
+    <title>Company's Profile Update | Dashboard</title>
     <link rel="icon" href="img/logo2.png" type="image/x-icon">
     <link href="assets3/css/bootstrap.min.css" rel="stylesheet">
     <script src="assets3/js/bootstrap.min.js"></script>
@@ -28,22 +67,25 @@
         </div>
 
         <div class="list-group list-group-flush my-3">
-            <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-                <i class="fas fa-plus me-2"></i>Post a Job
-            </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent second-text active text-white" >
-            <i class="fas fa-tachometer-alt me-2"></i>Jobs
-            </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-                <i class="fas fa-paperclip me-2"></i> Candidates
-            </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-                <i class="fas fa-list me-2"></i>Interviews
-            </a>
-            <a href="" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                <i class="fas fa-project-diagram me-2"></i>Log out
-            </a>
-        </div>
+                <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-plus me-2"></i>Profile
+                </a>
+                <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-plus me-2"></i>Post a Job
+                </a>
+                <a href="companyjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-tachometer-alt me-2"></i>Jobs
+                </a>
+                <a href="companyreview.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-tachometer-alt me-2"></i>Reviews
+                </a>
+                <a href="candidates.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
+                    <i class="fas fa-paperclip me-2"></i> Candidates
+                </a>
+                <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                    <i class="fas fa-project-diagram me-2"></i>Log out
+                </a>
+            </div>
 
     </div>
 
