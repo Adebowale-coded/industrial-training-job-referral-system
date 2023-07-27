@@ -61,24 +61,14 @@ require("dbconn.php");
 
             </nav>
 
-            <!--<nav class="m-auto">
-            <div class="dropdown">
-                <button class="btn  dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user me-2"></i>
-                </button>
-                <ul style="" class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <li><button class="dropdown-item" type="button">Profile</button></li>
-                  <li><button class="dropdown-item" type="button">My Jobs</button></li>
-                  <li><button class="dropdown-item" type="button">My Review</button></li>
-                  <li><button class="dropdown-item" type="button">Sign Out</button></li>
-                </ul>
-              </div>
-        </nav>-->
-
 
             <div class="ms-3">
                 <h4> My Jobs</h3>
+                <div class="">
                     <a href="jobs.php"><button class="btn btn-primary">Find Jobs</button></a>
+                    <a href="jobs.php"><button class="btn btn-success">List of Company</button></a>
+                </div>
+                    
             </div>
 
             <div class="container mt-3">

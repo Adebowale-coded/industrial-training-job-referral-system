@@ -121,7 +121,7 @@ require("dbconn.php");
           <p>View and apply for the available positions</p>
         </div>
 
-        <div class="card flex-row" style=" border: none;">
+        <div class="row" style=" border: none;">
         <?php
           $sql1 = "SELECT * FROM `offers`";
           $result1 = mysqli_query($con, $sql1);
