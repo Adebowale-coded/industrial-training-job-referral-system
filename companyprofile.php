@@ -38,7 +38,7 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
 
             <div class="list-group list-group-flush my-3">
                 <a href="companyprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-                    <i class="fas fa-plus me-2"></i>Profile
+                    <i class="fas fa-user me-2"></i>Profile
                 </a>
                 <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-plus me-2"></i>Post a Job
@@ -47,10 +47,10 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
                     <i class="fas fa-tachometer-alt me-2"></i>Jobs
                 </a>
                 <a href="companyreview.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-                    <i class="fas fa-tachometer-alt me-2"></i>Reviews
+                    <i class="fas fa-book me-2"></i>Reviews
                 </a>
                 <a href="candidates.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-                    <i class="fas fa-paperclip me-2"></i> Candidates
+                    <i class="fas fa-users me-2"></i> Candidates
                 </a>
                 <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                     <i class="fas fa-project-diagram me-2"></i>Log out
@@ -70,6 +70,8 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
 
             </nav>
 
+            <a href="companyupdatepr.php"><button class="btn btn-success ms-4">Edit Profile</button></a>
+
             <section class="bg-light">
                 <div class="container">
                     <div class="row">
@@ -86,11 +88,11 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
                                                 <span class="text-primary">CEO: Adebowale Ibrahim</span>
                                             </div>
                                             <ul class="list-unstyled mb-1-9">
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Founded:</span> 2010</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Companies Size:</span>20,000+</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> nestlecontact@gmail.com</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Website:</span> www.nestle.com</li>
-                                                <li class="display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 507 - 541 - 4567</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Founded:</span> 2010</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Companies Size:</span>20,000+</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Email:</span> nestlecontact@gmail.com</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Website:</span> www.nestle.com</li>
+                                                <li class="display-28"><span class="display-26 me-2 font-weight-600">Phone:</span> 507 - 541 - 4567</li>
                                             </ul>
                                             <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
                                                 <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
