@@ -1,6 +1,9 @@
 <?php
 session_start();
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+  header("Location: login.php");
+}
 
 $id = $_SESSION['id'];
 
@@ -99,7 +102,7 @@ if (isset($_POST['submit'])) {
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
         <div class="d-flex align-items-center">
           <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-          <h2 class="fs-2 m-0">Hi User</h2>
+          <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['name'] ?></h2>
         </div>
 
       </nav>

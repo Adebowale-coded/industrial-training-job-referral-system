@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
 require("dbconn.php");
 
 if (isset($_POST['apply'])) {
@@ -84,7 +87,7 @@ if (isset($_POST['apply'])) {
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname']?></h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname'] ?></h2>
                 </div>
 
             </nav>
@@ -121,6 +124,7 @@ if (isset($_POST['apply'])) {
                     ?>
                     <div class="row">
                         <div class="col pt-4 first">
+                            <img style="width:300px;height:auto" src="<?php echo $row["image"] ?>" class="img-fluid" />
                             <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
                             <p><?php echo $row1["name"] ?></p>
                             <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
@@ -135,7 +139,7 @@ if (isset($_POST['apply'])) {
                                 <p>To be eligible for the <?php echo $row["jobtitle"] ?>, applicants must have the following qualifications:</p>
                                 <ul>
                                     <?php
-                                    for ($i = 0; $i < count(explode(";", $row['jobrole'])) - 1; $i++) {
+                                    for ($i = 0; $i < count(explode(";", $row['jobrole'])); $i++) {
                                         echo "<li>" . explode(";", $row['jobrole'])[$i] . "</li>";
                                     }
                                     ?>

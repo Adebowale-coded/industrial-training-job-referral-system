@@ -1,11 +1,47 @@
 <?php
 session_start();
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
+
 
 $id = $_SESSION['id'];
 $sql = "SELECT * FROM `company` where id = $id";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($result);
+
+if (isset($_POST['dpupdate'])) {
+    $image = addslashes(file_get_contents($_FILES['dp']['tmp_name']));
+    $image_name = addslashes($_FILES['dp']['name']);
+    $image_size = getimagesize($_FILES['dp']['tmp_name']);
+
+    move_uploaded_file($_FILES["dp"]["tmp_name"], "img/" . $_FILES["dp"]["name"]);
+    $imagelocation = "img/" . $_FILES["dp"]["name"];
+
+
+    $sql = "UPDATE `company` SET `image`='$imagelocation' WHERE id = $id";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        ?>
+            <script>
+              alert("Profile picture updated successfully")
+              window.location.href = "companyprofile.php"
+            </script>
+          <?php
+          } else {
+          ?>
+            <script>
+              alert("there was an error")
+              window.location.href = window.location.href
+            </script>
+        <?php
+          }
+        
+
+}
+
 
 if (isset($_POST['update'])) {
     $name = $_POST['name'];
@@ -99,7 +135,7 @@ if (isset($_POST['update'])) {
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi User</h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['name'] ?></h2>
                 </div>
 
             </nav>
@@ -113,17 +149,24 @@ if (isset($_POST['update'])) {
                             <hr>
                         </div>
                         <!-- Form START -->
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="<?php echo $row['image'] ?>" name="dp" alt="">
+                            <form method="post" enctype = "multipart/form-data">
+                                <div>
+                                    <input id="dp" type="file" required />
+                                    <button type="submit" name="dpupdate">Update</button>
+                                </div>
+                            </form>
+
+
+                        </div>
                         <form class="file-upload" method="post">
                             <div class="row mb-5 gx-5">
                                 <!-- Contact detail -->
                                 <div class="col-xxl-8 mb-5 mb-xxl-0">
                                     <div class="bg-secondary-soft px-4 py-5 rounded">
                                         <div class="row g-3">
-                                            <div class="col-lg-6 mb-4 mb-lg-0">
-                                                <img src="assets/img/nestle.jpg" alt="...">
-                                                <label for="dp"><i class="fas fa-plus me-2"></i></label>
-                                                <input id="dp" type="file" hidden/>
-                                            </div>
+
                                             <h4 class="mb-4 mt-0">Contact detail</h4>
 
                                             <!-- First Name -->
