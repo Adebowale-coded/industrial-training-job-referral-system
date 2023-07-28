@@ -1,6 +1,7 @@
 <?php
 session_start();
 require("dbconn.php");
+$id = $_SESSION['id']
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ require("dbconn.php");
             </div>
 
             <div class="list-group list-group-flush my-3">
-                <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                <a href="companyprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-plus me-2"></i>Profile
                 </a>
                 <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
@@ -98,14 +99,14 @@ require("dbconn.php");
                         <tbody>
                             <?php
                             $id = $_SESSION['id'];
-                            $sql = "SELECT * FROM `jobsapplied` where companyid = ''";
+                            $sql = "SELECT * FROM `jobsapplied` where companyid = $id";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                             ?>
                                     <tr>
                                         <th scope="row"><?php echo $row['id'] ?></th>
-                                        <td><?php echo $row['companyname'] ?></td>
+                                        <td><?php echo $row['applicantname'] ?></td>
                                         <td><?php echo $row['jobtitle'] ?></td>
                                         <td><?php echo $row['dateapplied'] ?></td>
                                         <td><?php echo $row['status'] ?></td>

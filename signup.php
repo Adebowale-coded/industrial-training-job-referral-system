@@ -6,9 +6,9 @@ if (isset($_POST['register'])) {
 
 	require("dbconn.php");
 	if ($member == "student") {
-		$result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `email`, `password`) VALUES ('','','$email','$password')");
+		$result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `email`, `address`, `phone`, `password`, `about`, `age`, `school`) VALUES ('','','$email','','','$password','','','')");
 	} else {
-		$result = mysqli_query($con, "INSERT INTO `company`(`name`,`email`, `password`) VALUES ('','$email','$password')");
+		$result = mysqli_query($con, "INSERT INTO `company`(`name`, `email`, `phone`, `address`, `password`, `image`, `facebook`, `instagram`, `twitter`, `linkedin`, `website`) VALUES ('','$email','$password','','','','','','','')");
 	}
 	if ($result) {
 ?>

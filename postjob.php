@@ -12,16 +12,22 @@ if (isset($_POST['submit'])) {
   $jobrole = $_POST['jobrole'];
   $deadline = $_POST['deadline'];
 
+  $image= addslashes(file_get_contents($_FILES['jobimage']['tmp_name']));
+					$image_name= addslashes($_FILES['jobimage']['name']);
+					$image_size= getimagesize($_FILES['jobimage']['tmp_name']);
+		
+					move_uploaded_file($_FILES["jobimage"]["tmp_name"],"img/" . $_FILES["jobimage"]["name"]);			
+					$imagelocation="img/" . $_FILES["jobimage"]["name"];
 
-  $sql = "INSERT INTO `offers`(`companyid`, `jobtitle`, `location`, `salary`, `type`, `jobrole`, `deadline`) 
-  VALUES ('$id','$jobtitle','$location','$salary','$type','$jobrole','$deadline')";
+  $sql = "INSERT INTO `offers`(`companyid`, `image`, `jobtitle`, `location`, `salary`, `type`, `jobrole`, `deadline`) 
+  VALUES ('$id','$imagelocation','$jobtitle','$location','$salary','$type','$jobrole','$deadline')";
   $result = mysqli_query($con, $sql);
 
   if ($result) {
 ?>
     <script>
       alert("Job posted successfully")
-      window.location.href = "userprofile.php"
+      window.location.href = "companyjobs.php"
     </script>
   <?php
   } else {
@@ -102,14 +108,19 @@ if (isset($_POST['submit'])) {
       <!--<div class="container mt-5" style="padding: 5%; border-radius: 10px; background-color: #f17f94   ;">
           <h2>Your Employer Account</h2>
         </div>-->
-      <form class="container flex-column mt-3 ms-2" style="width: 100%;" method="post">
+      <form class="container flex-column mt-3 ms-2" style="width: 100%;" method="post" enctype = "multipart/form-data">
         <div class="heading" style="color: white; font-size: 10px;">
           <h5>Post a Job</h5>
         </div>
 
         <div class="mb-3">
+          <label class="form-label">Image</label>
+          <input type="file" class="form-control" name="jobimage" required>
+        </div>
+
+        <div class="mb-3">
           <label class="form-label">Job Title</label>
-          <input type="text" class="form-control" name="job-title" placeholder="" name="jobtitle" required>
+          <input type="text" class="form-control" placeholder="" name="jobtitle" required>
         </div>
 
         <div class="mb-3">

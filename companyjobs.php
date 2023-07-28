@@ -1,6 +1,7 @@
 <?php
 session_start();
 require("dbconn.php");
+$id = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ require("dbconn.php");
             </div>
 
             <div class="list-group list-group-flush my-3">
-                <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                <a href="companyprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-plus me-2"></i>Profile
                 </a>
                 <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
@@ -81,11 +82,7 @@ require("dbconn.php");
         </nav>-->
 
 
-            <div class="ms-3">
-                <h4> My Jobs</h3>
-                    <a href="jobs.php"><button class="btn btn-primary">Find Jobs</button></a>
-            </div>
-
+        
             <div class="container mt-3">
                 <div class="table-responsive ms-4 w-100">
                     <table class="table mt-3 ">
@@ -93,6 +90,7 @@ require("dbconn.php");
                             <tr>
                                 <th scope="col">S/N</th>
                                 <th scope="col">Job Title</th>
+                                <th scope="col">Job Image</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Deadline</th>
@@ -101,7 +99,7 @@ require("dbconn.php");
                         <tbody>
                             <?php
                             $id = $_SESSION['id'];
-                            $sql = "SELECT * FROM `offers` where companyid = ''";
+                            $sql = "SELECT * FROM `offers` where companyid = $id";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $count = 1;
@@ -110,6 +108,7 @@ require("dbconn.php");
                                     <tr>
                                         <th scope="row"><?php echo $count ?></th>
                                         <td><?php echo $row['jobtitle'] ?></td>
+                                        <td><img style="height:50px; width:50px" src="<?php echo $row['image'] ?>"/></td>
                                         <td><?php echo $row['salary'] ?></td>
                                         <td><?php echo $row['type'] ?></td>
                                         <td><?php echo $row['deadline'] ?></td>

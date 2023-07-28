@@ -78,39 +78,38 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
                 </ul>
               </div>
         </nav>-->
+            <div class="card">
+                <div class="row">
+                    <?php
+                    $sql = "SELECT * FROM `offers`";
+                    $result = mysqli_query($con, $sql);
 
-            <?php
-            $sql = "SELECT * FROM `offers`";
-            $result = mysqli_query($con, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['companyid'];
+                        $sql1 = "SELECT `name` FROM  `company` WHERE id = $id";
+                        $result1 = mysqli_query($con, $sql1);
+                        $row1 = mysqli_fetch_assoc($result1);
+                    ?>
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                $id = $row['companyid'];
-                $sql1 = "SELECT `name` FROM  `company` WHERE id = $id";
-                $result1 = mysqli_query($con, $sql1);
-                $row1 = mysqli_fetch_assoc($result1);
-            ?>
-                <div class="container mt-3">
-                    <div class="card " style="background-color: rgb(203, 206, 206);">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="img/close.jpg" class="img-fluid" />
-                            </div>
-                            <div class="col-md-8 first">
-                                <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
-                                <p><?php echo $row1["name"] ?></p>
-                                <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
-                                <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
-                                <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">More</button></a>
-                            </div>
+
+
+                        <div class="col-md-4 mb-3">
+                            <img style="width:300px;height:auto" src="<?php echo $row["image"] ?>" class="img-fluid" />
+                            <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
+                            <p><?php echo $row1["name"] ?></p>
+                            <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
+                            <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
+                            <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">More</button></a>
                         </div>
-                    </div>
+
+
+
+                    <?php
+                    }
+                    ?>
                 </div>
-            <?php
-            }
-            ?>
-
+            </div>
         </div>
-
 
 
 

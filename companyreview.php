@@ -1,5 +1,7 @@
 <?php
+session_start();
 require("dbconn.php");
+$id = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,13 +79,6 @@ require("dbconn.php");
                 </ul>
               </div>
         </nav>-->
-
-        
-        <div class="ms-3">
-            <h4> My Review</h3>
-            <button class="btn btn-primary">Write Review</button>
-        </div>
-        
     <div class="container mt-3">
         <div class="table-responsive ms-4 w-100">
             <table class="table mt-3 ">
@@ -92,11 +87,12 @@ require("dbconn.php");
                     <th scope="col">S/N</th>
                     <th scope="col">Name</th>
                     <th scope="col">Comment</th>
+                    <th scope="col">Rating</th>
                   </tr>
                 </thead> 
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM `review` where companyid = ''";
+                    $sql = "SELECT * FROM `review` WHERE companyid = $id";
                     $result = mysqli_query($con, $sql);
                     if(mysqli_num_rows($result) > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -105,7 +101,8 @@ require("dbconn.php");
                       <tr>
                         <th scope="row"><?php echo $count ?></th>
                         <td><?php echo $row['applicantname'] ?></td>
-                        <td><?php echo $row['comment'] ?></td>
+                        <td><?php echo $row['comments'] ?></td>
+                        <td><?php echo $row['rating'] ?>/5</td>
                       </tr>
                         <?php
                         $count++;
