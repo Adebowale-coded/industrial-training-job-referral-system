@@ -14,7 +14,7 @@ if (isset($_POST['register'])) {
 ?>
 		<script>
 			alert("Registration Successful");
-			window.location.href = 'index.php'
+			window.location.href = 'login.php'
 		</script>
 	<?php
 	} else {

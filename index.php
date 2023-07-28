@@ -160,7 +160,7 @@ require("dbconn.php");
           
 
         </div>
-        <a href="signup.php" class=""><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
+        <a href="jobs.php" class=""><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
       </div>
       
     </section><!-- End Services Section -->
@@ -296,10 +296,10 @@ require("dbconn.php");
                 <div class="member-img">
                   <img src="assets/img/mtn.jpg" class="img-fluid" alt="">
                   <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href="<?php echo $row["twitter"] ?>"><i class="bi bi-twitter"></i></a>
+                    <a href="<?php echo $row["facebook"] ?>"><i class="bi bi-facebook"></i></a>
+                    <a href="<?php echo $row["instagram"] ?>"><i class="bi bi-instagram"></i></a>
+                    <a href="<?php echo $row["linkedin"] ?>"><i class="bi bi-linkedin"></i></a>
                   </div>
                 </div>
                 <div class="member-info">
@@ -313,7 +313,7 @@ require("dbconn.php");
 
         </div>
 
-          <a href="signup.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
+          <a href="listcompany.php" class="align-items-center"><button class="btn mt-4" style="background: #ea6981; color: white;"><strong>View More</strong></button></a>
         </div>
 
       </div>

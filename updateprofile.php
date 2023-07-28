@@ -1,6 +1,9 @@
 <?php
 session_start();
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
 
 $id = $_SESSION['id'];
 $sql = "SELECT * FROM `student` where id = $id";

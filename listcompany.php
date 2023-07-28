@@ -1,5 +1,8 @@
 <?php
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,17 +35,17 @@ require("dbconn.php");
             </div>
 
             <div class="list-group list-group-flush my-3">
-                <a href="updateprofile.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-plus me-2"></i>Profile
                 </a>
-                <a href="myjobs.html" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                <a href="myjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
                     <i class="fas fa-tachometer-alt me-2"></i>MyJobs
                 </a>
-                <a href="" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
+                <a href="myreview.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
                     <i class="fas fa-list me-2"></i>My Review
                 </a>
 
-                <a href="" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                     <i class="fas fa-project-diagram me-2"></i>Sign out
                 </a>
             </div>
@@ -55,7 +58,7 @@ require("dbconn.php");
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi User</h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname']?></h2>
                 </div>
 
             </nav>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 require("dbconn.php");
+
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +60,7 @@ require("dbconn.php");
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi User</h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname'] ?></h2>
                 </div>
 
             </nav>
@@ -75,36 +79,36 @@ require("dbconn.php");
               </div>
         </nav>-->
 
-        <?php
-          $sql = "SELECT * FROM `offers`";
-          $result = mysqli_query($con, $sql);
-        
-          while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row['companyid'];
-            $sql1 = "SELECT `name` FROM  `company` WHERE id = $id";
-            $result1 = mysqli_query($con, $sql1);
-            $row1 = mysqli_fetch_assoc($result1);
+            <?php
+            $sql = "SELECT * FROM `offers`";
+            $result = mysqli_query($con, $sql);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['companyid'];
+                $sql1 = "SELECT `name` FROM  `company` WHERE id = $id";
+                $result1 = mysqli_query($con, $sql1);
+                $row1 = mysqli_fetch_assoc($result1);
             ?>
-            <div class="container mt-3">
-                <div class="card " style="background-color: rgb(203, 206, 206);">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="img/close.jpg" class="img-fluid" />
-                        </div>
-                        <div class="col-md-8 first">
-                            <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
-                            <p><?php echo $row1["name"] ?></p>
-                            <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
-                            <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
-                            <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">More</button></a>
+                <div class="container mt-3">
+                    <div class="card " style="background-color: rgb(203, 206, 206);">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="img/close.jpg" class="img-fluid" />
+                            </div>
+                            <div class="col-md-8 first">
+                                <h3><strong><?php echo $row["jobtitle"] ?></strong></h3>
+                                <p><?php echo $row1["name"] ?></p>
+                                <p><?php echo $row["location"] ?> | <strong style="font-size: 12px;"><?php echo $row["type"] ?></strong></p>
+                                <p><strong style="font-size: 12px;"><?php echo $row["salary"] ?></strong></p>
+                                <a href="jobinfo.php?id=<?php echo $row["id"] ?>"><button class="btn btn-primary">More</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <?php
-          }
-          ?>
-           
+            }
+            ?>
+
         </div>
 
 

@@ -1,6 +1,9 @@
 <?php
 session_start();
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+    header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +59,7 @@ require("dbconn.php");
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi User</h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname']?></h2>
                 </div>
 
             </nav>
@@ -66,7 +69,7 @@ require("dbconn.php");
                 <h4> My Jobs</h3>
                 <div class="">
                     <a href="jobs.php"><button class="btn btn-primary">Find Jobs</button></a>
-                    <a href="jobs.php"><button class="btn btn-success">List of Company</button></a>
+                    <a href="listcompany.php"><button class="btn btn-success">List of Company</button></a>
                 </div>
                     
             </div>

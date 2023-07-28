@@ -28,8 +28,7 @@ if (isset($_POST['login'])) {
 		$result = mysqli_query($con, "SELECT * FROM `company` WHERE email = '$email' AND password = '$password'");
 		if (mysqli_num_rows($result)) {
 			$res = mysqli_fetch_array($result);
-			$_SESSION['firstname'] = $res['firstname'];
-			$_SESSION['lastname'] = $res['lastname'];
+			$_SESSION['name'] = $res['name'];
 			$_SESSION['email'] = $res['email'];
 			$_SESSION['role'] = $member;
 			header("Location: companyprofile.php");

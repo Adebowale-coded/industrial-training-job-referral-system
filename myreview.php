@@ -1,5 +1,10 @@
 <?php
+session_start();
 require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+  header("Location: login.php");
+}
+$id = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +59,7 @@ require("dbconn.php");
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
             <div class="d-flex align-items-center">
                 <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Hi User</h2>
+                <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname']?></h2>
             </div>
 
         </nav>
@@ -76,7 +81,7 @@ require("dbconn.php");
         
         <div class="ms-3">
             <h4> My Review</h3>
-            <a href="writereview.html"><button class="btn btn-primary">Write Review</button></a>
+            <a href="writereview.php"><button class="btn btn-primary">Write Review</button></a>
         </div>
         
     <div class="container mt-3">
@@ -87,11 +92,12 @@ require("dbconn.php");
                     <th scope="col">S/N</th>
                     <th scope="col">Company's Name</th>
                     <th scope="col">Comment</th>
+                    <th scope="col">Rating</th>
                   </tr>
                 </thead> 
                 <tbody>
                     <?php
-                    $sql = "SELECT * FROM `review` where applicantid = ''";
+                    $sql = "SELECT * FROM `review` where applicantid = $id";
                     $result = mysqli_query($con, $sql);
                     if(mysqli_num_rows($result) > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -99,7 +105,8 @@ require("dbconn.php");
                       <tr>
                         <th scope="row"><?php echo $row['id'] ?></th>
                         <td><?php echo $row['companyname'] ?></td>
-                        <td><?php echo $row['comment'] ?></td>
+                        <td><?php echo $row['comments'] ?></td>
+                        <td><?php echo $row['rating'] ?> / 5</td>
                       </tr>
                         <?php
                         }
