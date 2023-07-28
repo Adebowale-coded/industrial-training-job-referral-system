@@ -5,6 +5,10 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
     header("Location: login.php");
 }
 
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM `company` where id = $id";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,25 +84,22 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
                                 <div class="card-body p-1-9 p-sm-2-3  p-lg-7">
                                     <div class="row align-items-center">
                                         <div class="col-lg-6 mb-4 mb-lg-0">
-                                            <img src="assets/img/nestle.jpg" alt="...">
+                                            <img src="<?php echo $row['image'] ?>" alt="...">
                                         </div>
                                         <div class="col-lg-6 px-xl-10">
                                             <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                                <h3 class="h2 text-white mb-0">Nestle Beverages</h3>
-                                                <span class="text-primary">CEO: Adebowale Ibrahim</span>
+                                                <h3 class="h2 text-white mb-0"><?php echo $_SESSION['name'] ?></h3>
                                             </div>
                                             <ul class="list-unstyled mb-1-9">
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Founded:</span> 2010</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Companies Size:</span>20,000+</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Email:</span> nestlecontact@gmail.com</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Website:</span> www.nestle.com</li>
-                                                <li class="display-28"><span class="display-26 me-2 font-weight-600">Phone:</span> 507 - 541 - 4567</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Email:</span> <?php echo $row['email'] ?></li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Website:</span> <?php echo $row['website'] ?></li>
+                                                <li class="display-28"><span class="display-26 me-2 font-weight-600">Phone:</span> <?php echo $row['phone'] ?></li>
                                             </ul>
                                             <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
-                                                <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
-                                                <li><a href="#!"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#!"><i class="ti-pinterest"></i></a></li>
-                                                <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                                <li><a href="#!"><i class="ti-twitter-alt"></i><?php echo $row['twitter'] ?></a></li>
+                                                <li><a href="#!"><i class="ti-facebook"></i><?php echo $row['facebook'] ?></a></li>
+                                                <li><a href="#!"><i class="ti-linkedin"></i><?php echo $row['linkedin'] ?></a></li>
+                                                <li><a href="#!"><i class="ti-instagram"></i><?php echo $row['instagram'] ?></a></li>
                                             </ul>
                                         </div>
                                     </div>
