@@ -150,10 +150,10 @@ if (isset($_POST['update'])) {
                         </div>
                         <!-- Form START -->
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img src="<?php echo $row['image'] ?>" name="dp" alt="">
+                            <img src="<?php echo $row['image'] ?>"  alt="">
                             <form method="post" enctype = "multipart/form-data">
                                 <div>
-                                    <input id="dp" type="file" required />
+                                    <input id="dp" type="file" name="dp" required />
                                     <button type="submit" name="dpupdate">Update</button>
                                 </div>
                             </form>
