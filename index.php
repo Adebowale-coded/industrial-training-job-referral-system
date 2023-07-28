@@ -130,25 +130,28 @@ require("dbconn.php");
           while ($row1 = mysqli_fetch_assoc($result1)) {
             array_push($idarray1, $row1["companyid"]);
           }
-          while (count($idarraynew1) < 4) {
-            $ran1 =  rand(1, count($idarray1));
-            if (!in_array($ran1, $idarraynew1)) {
-              array_push($idarraynew1, $ran1);
+          $i = count($idarraynew1);
+          while ($i < 4) {
+            $ran1 =  rand(0, count($idarray1)-1);
+            if (!in_array($idarray1[$ran1], $idarraynew1)) {
+              array_push($idarraynew1, $idarray1[$ran1]);
+              $i++;
             }
+            
           }
-
           for ($i = 0; $i < 4; $i++) {
-            $sql = "SELECT * FROM `offers` WHERE id = $idarraynew1[$i]";
+            $sql = "SELECT * FROM `offers` WHERE companyid = $idarraynew1[$i]";
             $result = mysqli_query($con, $sql);
             $row = mysqli_fetch_assoc($result);
-            $sql1 = "SELECT `name` FROM  `company` WHERE id = $idarraynew1[$i]";
-            $result1 = mysqli_query($con, $sql1);
-            $row1 = mysqli_fetch_assoc($result1)
+            $sql2 = "SELECT * FROM  `company` WHERE id = $idarraynew1[$i]";
+            $result2 = mysqli_query($con, $sql2);
+            $row2 = mysqli_fetch_assoc($result2)
           ?>
           <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
             <div class="icon-box" style="text-align: left;">
               <h4 class="title"><a href="signup.php"><?php echo $row["jobtitle"] ?></a></h4>
-              <p><?php echo $row1["name"] ?></p>
+              <p><?php echo $row2["name"] ?></p>
+              <p><?php echo $row2["id"] ?></p>
               <p class="description"><?php echo $row["type"] ?></p>
               <p class="description"><?php echo $row["location"] ?></p>
               <p style="background-color: grey; padding: 10px; color: white; border-radius: 20px;"><?php echo $row["salary"] ?></p>
@@ -294,7 +297,7 @@ require("dbconn.php");
             <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
               <div class="member">
                 <div class="member-img">
-                  <img src="assets/img/mtn.jpg" class="img-fluid" alt="">
+                  <img src="<?php echo $row['image'] ?>" class="img-fluid" alt="">
                   <div class="social">
                     <a href="<?php echo $row["twitter"] ?>"><i class="bi bi-twitter"></i></a>
                     <a href="<?php echo $row["facebook"] ?>"><i class="bi bi-facebook"></i></a>
