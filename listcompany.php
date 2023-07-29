@@ -95,7 +95,7 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
                                             <p><i class="fab fa-fw fa-globe me-2 text-globe"></i><a href="<?php echo $row['website'] ?>"><?php echo $row['website'] ?></a></p>
                                         </div>
                                         <div class="widget-49-title-wrapper">
-                                            <a href="reviewpg.php"><button class="btn btn-success">See Reviews</button></a>
+                                        <a href="reviewpg.php?id=<?php echo $row["id"] ?>"><button class="btn btn-success">See Reviews</button></a>
                                         </div>
                                     </div>
                                 </div>

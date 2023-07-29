@@ -87,12 +87,17 @@ if (mysqli_num_rows($result) > 0) {
         <img src="<?php echo $row1["image"] ?>" alt="" height="50px">
         <label><Strong style="font-size: 29px;"><?php echo $row1["name"] ?></Strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span class="" style="font-size: 15px;">Ratings: <?php echo $rating ?>/5</span>
-        <span class="" style="font-size: 15px;">Ratings: <?php echo $rating ?>/5</span>
       </div>
 
       <div class="ms-5">
         <span style="font-size: 18px;">Reviews</span>&nbsp;&nbsp;
-        <a href="listofstudent.html"><button class="btn btn-success">List Of Students</button></a>
+        <?php
+        $comid = $_GET["id"];
+        $n = "SELECT * FROM `jobsapplied` WHERE `companyid` = $comid";
+        $r = mysqli_query($con, $n);
+
+        ?>
+        <span style="font-size: 18px;">No of applicant: <?php echo mysqli_num_rows($r) ?></span>&nbsp;&nbsp;
       </div>
       <hr>
 
