@@ -155,6 +155,7 @@ require("dbconn.php");
               <p class="description"><?php echo $row["type"] ?></p>
               <p class="description"><?php echo $row["location"] ?></p>
               <p style="background-color: grey; padding: 10px; color: white; border-radius: 20px;"><?php echo $row["salary"] ?></p>
+              <p style="font-size: 13px">Slots Available: ()</p>
             </div>
           </div >
           <?php

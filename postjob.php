@@ -161,6 +161,21 @@ if (isset($_POST['submit'])) {
               <label class="form-label">Deadline</label>
               <input type="date" class="form-control" name="deadline" required>
             </div>
+            <div class="col">
+              <label class="form-label">Slots Available</label>
+              <select name="slot" id="" class="form-control" required>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+                <option value="">6</option>
+                <option value="">7</option>
+                <option value="">8</option>
+                <option value="">9</option>
+                <option value="">10</option>
+              </select>
+            </div>
           </div>
 
 
