@@ -147,6 +147,7 @@ if (isset($_POST['apply'])) {
                             </div>
                             <div>
                                 <p>Application Deadline: <?php echo $row["deadline"] ?></p>
+                                <a href="reviewpg.html"><button class="btn btn-success">See Reviews</button></a>
                             </div>
                         </div>
                     </div>

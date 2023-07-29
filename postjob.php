@@ -74,25 +74,25 @@ if (isset($_POST['submit'])) {
       </div>
 
       <div class="list-group list-group-flush my-3">
-        <a href="userprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-          <i class="fas fa-plus me-2"></i>Profile
-        </a>
-        <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-          <i class="fas fa-plus me-2"></i>Post a Job
-        </a>
-        <a href="companyjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-          <i class="fas fa-tachometer-alt me-2"></i>Jobs
-        </a>
-        <a href="companyreview.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
-          <i class="fas fa-tachometer-alt me-2"></i>Reviews
-        </a>
-        <a href="candidates.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
-          <i class="fas fa-paperclip me-2"></i> Candidates
-        </a>
-        <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-          <i class="fas fa-project-diagram me-2"></i>Log out
-        </a>
-      </div>
+                <a href="companyprofile.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-user me-2"></i>Profile
+                </a>
+                <a href="postjob.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-plus me-2"></i>Post a Job
+                </a>
+                <a href="companyjobs.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-tachometer-alt me-2"></i>Jobs
+                </a>
+                <a href="companyreview.php" class="list-group-item list-group-item-action bg-transparent second-text active text-white">
+                    <i class="fas fa-book me-2"></i>Reviews
+                </a>
+                <a href="candidates.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-white">
+                    <i class="fas fa-users me-2"></i> Candidates
+                </a>
+                <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                    <i class="fas fa-project-diagram me-2"></i>Log out
+                </a>
+            </div>
 
     </div>
 
