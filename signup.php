@@ -18,6 +18,7 @@ if (isset($_POST['register'])) {
 			$result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `email`, `address`, `phone`, `password`, `about`, `age`, `school`) VALUES ('','','$email','','','$password','','','')");
 		}
 	} else {
+		$check = mysqli_query($con, "SELECT `email` FROM `student` WHERE email = '$email'");
 		if ($check) {
 		?>
 			<script>
