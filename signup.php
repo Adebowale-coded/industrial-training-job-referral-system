@@ -6,12 +6,31 @@ if (isset($_POST['register'])) {
 
 	require("dbconn.php");
 	if ($member == "student") {
-		$result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `email`, `address`, `phone`, `password`, `about`, `age`, `school`) VALUES ('','','$email','','','$password','','','')");
+		$check = mysqli_query($con, "SELECT `email` FROM `student` WHERE email = '$email'");
+		if ($check) {
+?>
+			<script>
+				alert("User already exist");
+				window.location.href = 'signup.php'
+			</script>
+		<?php
+		} else {
+			$result = mysqli_query($con, "INSERT INTO `student`(`firstname`, `lastname`, `email`, `address`, `phone`, `password`, `about`, `age`, `school`) VALUES ('','','$email','','','$password','','','')");
+		}
 	} else {
-		$result = mysqli_query($con, "INSERT INTO `company`(`name`, `email`, `phone`, `address`, `password`, `image`, `facebook`, `instagram`, `twitter`, `linkedin`, `website`) VALUES ('','$email','$password','','','','','','','','')");
+		if ($check) {
+		?>
+			<script>
+				alert("User already exist");
+				window.location.href = 'signup.php'
+			</script>
+		<?php
+		} else {
+			$result = mysqli_query($con, "INSERT INTO `company`(`name`, `email`, `phone`, `address`, `password`, `image`, `facebook`, `instagram`, `twitter`, `linkedin`, `website`) VALUES ('','$email','$password','','','','','','','','')");
+		}
 	}
 	if ($result) {
-?>
+		?>
 		<script>
 			alert("Registration Successful");
 			window.location.href = 'login.php'

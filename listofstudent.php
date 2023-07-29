@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reviews | Dashboard</title>
+  <title>List of Students | Dashboard</title>
   <link rel="icon" href="img/logo2.png" type="image/x-icon">
   <link href="assets3/css/bootstrap.min.css" rel="stylesheet">
   <script src="assets3/js/bootstrap.min.js"></script>
@@ -61,54 +61,40 @@
         <label><Strong style="font-size: 29px;">Dangote PLC</Strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <span class="" style="font-size: 15px;">Ratings: 4/5</span>
       </div>
-
-    <div class="ms-5">
-       <span style="font-size: 18px;">Reviews</span>&nbsp;&nbsp;
-      <a href="listofstudent.html"><button class="btn btn-success">List Of Students</button></a> 
-    </div><hr>
       
+    <div>
+       <span class="ms-5" style="font-size: 18px;"><strong>List of Students</strong></span>
+        <a href="reviewpg.php"><button class="btn btn-success">Reviews</button></a> 
+    </div><hr>
 
-            <section class="p-4 p-md-4 text-center text-lg-start shadow-1-strong rounded" >
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-10">
-                        <div class="card">
-                            <div class="card-body m-3">
-                            <div class="row">
-                                <div class="col-lg-10">
-                                <p class="text-muted fw-light mb-3">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente
-                                    molestiae numquam 
-                                </p>
-                                <p class="fw-bold lead mb-0"><strong>Sam Tinto</strong></p>
-                                <p class="fw-bold text-muted mb-0">Convenant University</p>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-            </section>
+            <div class="container mt-3">
+                <div class="table-responsive ms-4 w-100">
+                    <table class="table mt-3">
+                        <thead style="background-color: rgb(0, 0, 0); color: white;">
+                            <tr>
+                                <th scope="col">S/N</th>
+                                <th scope="col">Student's Name</th>
+                                <th scope="col">Job Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Adegbenga Olusegun</td>
+                                        <td>IT Intern</td>
+                                    </tr>
+                        </tbody>
 
-            <section class="p-4 p-md-4 text-center text-lg-start shadow-1-strong rounded" >
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-10">
-                    <div class="card">
-                        <div class="card-body m-3">
-                        <div class="row">
-                            <div class="col-lg-10">
-                            <p class="text-muted fw-light mb-3">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente
-                                molestiae numquam 
-                            </p>
-                            <p class="fw-bold lead mb-0"><strong>Gwagwa Blessing</strong></p>
-                            <p class="fw-bold text-muted mb-0">Babcock University</p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+                        <tbody>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Obasanjo David</td>
+                                <td>Mass Comm Intern</td>
+                            </tr>
+                </tbody>
+                    </table>
                 </div>
-        </section>
+            </div>
       
     </div>
 

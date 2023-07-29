@@ -151,11 +151,10 @@ require("dbconn.php");
             <div class="icon-box" style="text-align: left;">
               <h4 class="title"><a href="signup.php"><?php echo $row["jobtitle"] ?></a></h4>
               <p><?php echo $row2["name"] ?></p>
-              <p><?php echo $row2["id"] ?></p>
               <p class="description"><?php echo $row["type"] ?></p>
               <p class="description"><?php echo $row["location"] ?></p>
               <p style="background-color: grey; padding: 10px; color: white; border-radius: 20px;"><?php echo $row["salary"] ?></p>
-              <p style="font-size: 13px">Slots Available: ()</p>
+              <p style="font-size: 13px">Slots Available: <?php echo $row["slot"] ?></p>
             </div>
           </div >
           <?php

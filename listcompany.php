@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("dbconn.php");
 if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
     header("Location: login.php");
@@ -58,7 +59,7 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname']?></h2>
+                    <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname'] ?></h2>
                 </div>
 
             </nav>
@@ -92,6 +93,9 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
                                         </div>
                                         <div class="widget-49-title-wrapper">
                                             <p><i class="fab fa-fw fa-globe me-2 text-globe"></i><a href="<?php echo $row['website'] ?>"><?php echo $row['website'] ?></a></p>
+                                        </div>
+                                        <div class="widget-49-title-wrapper">
+                                            <a href="reviewpg.php"><button class="btn btn-success">See Reviews</button></a>
                                         </div>
                                     </div>
                                 </div>

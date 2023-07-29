@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
   $type = $_POST['type'];
   $jobrole = $_POST['jobrole'];
   $deadline = $_POST['deadline'];
+  $slot = $_POST['slot'];
 
   $image= addslashes(file_get_contents($_FILES['jobimage']['tmp_name']));
 					$image_name= addslashes($_FILES['jobimage']['name']);
@@ -22,8 +23,8 @@ if (isset($_POST['submit'])) {
 					move_uploaded_file($_FILES["jobimage"]["tmp_name"],"img/" . $_FILES["jobimage"]["name"]);			
 					$imagelocation="img/" . $_FILES["jobimage"]["name"];
 
-  $sql = "INSERT INTO `offers`(`companyid`, `image`, `jobtitle`, `location`, `salary`, `type`, `jobrole`, `deadline`) 
-  VALUES ('$id','$imagelocation','$jobtitle','$location','$salary','$type','$jobrole','$deadline')";
+  $sql = "INSERT INTO `offers`(`companyid`, `image`, `jobtitle`, `location`, `salary`, `type`, `jobrole`, `deadline`, `slot`) 
+  VALUES ('$id','$imagelocation','$jobtitle','$location','$salary','$type','$jobrole','$deadline','$slot')";
   $result = mysqli_query($con, $sql);
 
   if ($result) {
@@ -164,16 +165,16 @@ if (isset($_POST['submit'])) {
             <div class="col">
               <label class="form-label">Slots Available</label>
               <select name="slot" id="" class="form-control" required>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-                <option value="">5</option>
-                <option value="">6</option>
-                <option value="">7</option>
-                <option value="">8</option>
-                <option value="">9</option>
-                <option value="">10</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
               </select>
             </div>
           </div>

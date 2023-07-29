@@ -1,3 +1,30 @@
+<?php
+session_start();
+require("dbconn.php");
+if (!isset($_SESSION['role']) && $_SESSION['role'] != "student") {
+  header("Location: login.php");
+}
+
+$id = $_GET["id"];
+$sql1 = "SELECT * FROM  `company` WHERE id = $id";
+$result1 = mysqli_query($con, $sql1);
+$row1 = mysqli_fetch_assoc($result1);
+
+$sql = "SELECT * FROM `review` WHERE companyid = $id";
+$result = mysqli_query($con, $sql);
+$sql2 = "SELECT * FROM `review` WHERE companyid = $id";
+$result2 = mysqli_query($con, $sql2);
+
+$avg = 0;
+$rating = 0;
+if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $avg += $row["rating"];
+  }
+  $rating = $avg / mysqli_num_rows($result);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +32,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>List of Students | Dashboard</title>
+  <title>Reviews | Dashboard</title>
   <link rel="icon" href="img/logo2.png" type="image/x-icon">
   <link href="assets3/css/bootstrap.min.css" rel="stylesheet">
   <script src="assets3/js/bootstrap.min.js"></script>
@@ -52,50 +79,60 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
         <div class="d-flex align-items-center">
           <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-          <h2 class="fs-2 m-0">Hi user</h2>
+          <h2 class="fs-2 m-0">Hi <?php echo $_SESSION['firstname'] .  ' ' . $_SESSION['lastname'] ?></h2>
         </div>
       </nav>
 
       <div class="mb-3 ms-5">
-        <img src="img/close.jpg" alt="" height="50px">
-        <label><Strong style="font-size: 29px;">Dangote PLC</Strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <span class="" style="font-size: 15px;">Ratings: 4/5</span>
+        <img src="<?php echo $row1["image"] ?>" alt="" height="50px">
+        <label><Strong style="font-size: 29px;"><?php echo $row1["name"] ?></Strong></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="" style="font-size: 15px;">Ratings: <?php echo $rating ?>/5</span>
+        <span class="" style="font-size: 15px;">Ratings: <?php echo $rating ?>/5</span>
       </div>
-      
-    <div>
-       <span class="ms-5" style="font-size: 18px;"><strong>List of Students</strong></span>
-        <a href="reviewpg.html"><button class="btn btn-success">Reviews</button></a> 
-    </div><hr>
 
-            <div class="container mt-3">
-                <div class="table-responsive ms-4 w-100">
-                    <table class="table mt-3">
-                        <thead style="background-color: rgb(0, 0, 0); color: white;">
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Student's Name</th>
-                                <th scope="col">Job Title</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Adegbenga Olusegun</td>
-                                        <td>IT Intern</td>
-                                    </tr>
-                        </tbody>
+      <div class="ms-5">
+        <span style="font-size: 18px;">Reviews</span>&nbsp;&nbsp;
+        <a href="listofstudent.html"><button class="btn btn-success">List Of Students</button></a>
+      </div>
+      <hr>
 
-                        <tbody>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Obasanjo David</td>
-                                <td>Mass Comm Intern</td>
-                            </tr>
-                </tbody>
-                    </table>
+      <?php
+      if (mysqli_num_rows($result) > 0) {
+        while ($row2 = mysqli_fetch_assoc($result2)) {
+      ?>
+          <section class="p-4 p-md-4 text-center text-lg-start shadow-1-strong rounded">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+                <div class="card">
+                  <div class="card-body m-3">
+                    <div class="row">
+                      <div class="col-lg-10">
+                        <p class="text-muted fw-light mb-3">
+                          <?php echo $row2['comments'] ?>
+                        </p>
+                        <p class="fw-bold lead mb-0"><strong><?php echo $row2['applicantname'] ?></strong></p>
+                        <?php
+                        $applicantid = $row2['applicantid'];
+                        $sql = "SELECT * FROM `student` where id = $applicantid";
+                        $result = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_array($result);
+                        ?>
+                        <p class="fw-bold text-muted mb-0"><?php echo $row['school'] ?></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-      
+          </section>
+      <?php
+        }
+      } else {
+        echo '<p class="text-muted fw-light m-5">No review yet</p>';
+      }
+      ?>
+
+
     </div>
 
 
