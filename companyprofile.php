@@ -5,6 +5,10 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
     header("Location: login.php");
 }
 
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM `company` where id = $id";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,65 +82,27 @@ if (!isset($_SESSION['role']) && $_SESSION['role'] != "company") {
                         <div class="col-lg-12 mb-4 mb-sm-5">
                             <div class="card card-style1 border-0">
                                 <div class="card-body p-1-9 p-sm-2-3  p-lg-7">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-6 mb-4 mb-lg-0">
-                                            <img src="assets/img/nestle.jpg" alt="...">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img src="<?php echo $row['image'] ?>" alt="..." style="width:100%">
                                         </div>
-                                        <div class="col-lg-6 px-xl-10">
+                                        <div class="col-lg-6">
                                             <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                                <h3 class="h2 text-white mb-0">Nestle Beverages</h3>
-                                                <span class="text-primary">CEO: Adebowale Ibrahim</span>
+                                                <h3 class="h2 text-white mb-0"><?php echo $_SESSION['name'] ?></h3>
                                             </div>
                                             <ul class="list-unstyled mb-1-9">
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Founded:</span> 2010</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Companies Size:</span>20,000+</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Email:</span> nestlecontact@gmail.com</li>
-                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Website:</span> www.nestle.com</li>
-                                                <li class="display-28"><span class="display-26 me-2 font-weight-600">Phone:</span> 507 - 541 - 4567</li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Email:</span> <?php echo $row['email'] ?></li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 me-2 font-weight-600">Website:</span> <?php echo $row['website'] ?></li>
+                                                <li class="display-28"><span class="display-26 me-2 font-weight-600">Phone:</span> <?php echo $row['phone'] ?></li>
                                             </ul>
                                             <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
-                                                <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
-                                                <li><a href="#!"><i class="ti-facebook"></i></a></li>
-                                                <li><a href="#!"><i class="ti-pinterest"></i></a></li>
-                                                <li><a href="#!"><i class="ti-instagram"></i></a></li>
+                                                <li><a href="#!"><i class="fab fa-fw fa-twitter"></i><?php echo $row['twitter'] ?></a></li>
+                                                <li><a href="#!"><i class="fab fa-fw fa-facebook"></i><?php echo $row['facebook'] ?></a></li>
+                                                <li><a href="#!"><i class="fab fa-fw fa-linkedin-in"></i><?php echo $row['linkedin'] ?></a></li>
+                                                <li><a href="#!"><i class="fab fa-fw fa-instagram"></i><?php echo $row['instagram'] ?></a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mb-4 mb-sm-5">
-                            <div>
-                                <span class="section-title text-primary mb-3 mb-sm-4">About the Company</span>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum qui sed esse nam delectus praesentium fuga odio sit ad error ipsam totam corporis suscipit rerum id accusantium hic eaque ex quaerat quis, amet architecto, consequatur inventore? Maiores eaque omnis mollitia laborum, minus, nihil, neque excepturi facere id rerum error animi dicta officia! Harum quo pariatur magni dolorem aspernatur ut eaque numquam culpa explicabo? Ratione, nemo modi, omnis odit quas autem illo ab nostrum id quos obcaecati inventore officia nihil mollitia perferendis dolorem expedita aperiam repellendus natus consequatur quia facilis fuga quo! Illum tempora dolore nam magnam placeat in asperiores sapiente, repellendus accusamus repudiandae, sunt facere totam modi optio! Vero recusandae soluta cupiditate quae quidem in voluptatibus laboriosam consectetur animi? Nihil doloremque eos, expedita voluptates quibusdam dolorem inventore nam pariatur dolor mollitia laboriosam, vel illo ex nesciunt, deleniti enim accusantium eaque at labore? Sint, ad, labore ducimus neque voluptatibus cupiditate vel, illo porro vero tempore laborum architecto magnam numquam perferendis repudiandae quibusdam ipsa sed quos suscipit amet exercitationem dolor commodi consequatur corporis? Autem veritatis sapiente corrupti in, hic voluptates soluta, quis reprehenderit, consequatur tempore odit cumque dolores. Ipsa omnis doloremque voluptatibus numquam fugit quisquam perspiciatis, autem quam molestias blanditiis impedit! Perspiciatis?</p>
-                                <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-lg-12 mb-4 mb-sm-5">
-
-                                    <div>
-                                        <span class="section-title text-primary mb-3 mb-sm-4">Review this company</span>
-                                        <form class="container flex-column mt-3 ms-2" style="width: 100%;" method="post"></form>
-                                        <div class="mb-3 row">
-                                            <div class="col">
-                                                <label class="form-label"><strong>Job title</strong></label>
-                                                <input type="type" class="form-control" name="dob" placeholder="" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label"><strong>Location</strong></label>
-                                                <input type="type" class="form-control" name="dob" placeholder="" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label"><strong>Your Review</strong></label>
-                                        <input type="textarea" class="form-control" name="occupation" required>
-                                    </div>
-                                    <button class="btn btn-success" style="background: #15395A;">Send</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
